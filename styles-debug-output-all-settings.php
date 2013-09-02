@@ -66,13 +66,17 @@ class Styles_Debug_Output_All_Settings {
 
 		ob_start();
 
+		$theme = wp_get_theme();
+
 		?>
 		<style>
-			table, td { font-family:monospace !important; font-size: 12px; margin:10px; }
+			body { font-family:monospace !important; }
+			td, th { font-size: 12px; margin:0; padding: 10px; text-align: left; }
 			th { background-color: #000; color: #fff; }
 			tr:nth-child(odd) { background-color: #ccc; }
 		</style>
 
+		<h2>Styles Settings</h2>
 		<table>
 			<tr>
 				<th>option_id</th>
@@ -94,8 +98,11 @@ class Styles_Debug_Output_All_Settings {
 		}
 		?>
 		</table>
-		<?php
 
+		<h2>Active Theme</h2>
+		<pre><?php print_r( $theme ); ?></pre>
+
+		<?php
 		$output = ob_get_clean();
 
 		echo $output;
